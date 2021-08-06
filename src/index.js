@@ -1,29 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppHeader from './components/appHeader';
-import SearchInput from './components/searchInput';
-import TodoList from './components/todo';
-import img from "https://avatars.githubusercontent.com/u/69717101?v=4"
+import AppHeader from './components/app-header';
+import SearchPanel from './components/search-panel';
+import TodoList from './components/todo-list';
+import ItemStatusFilter from './components/item-status-filter';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.css'
 
+const App = () => {
 
-const App = () => { 
-  const isLoggedIn = false;
-  const loginBox = <span>Login Box</span>
-  const welcomeBox = <span>Welcome </span>
-
+  const todoData = [
+    { label: 'Drink Coffee', important: false, id: 1 },
+    { label: 'Make Awesome App', important: true, id: 2 },
+    { label: 'Have a lunch', important: false, id: 3 }
+  ];
 
   return (
-    <div>
-      {isLoggedIn ? welcomeBox : loginBox}
-   <AppHeader />
-      <SearchInput />
-      <TodoList />
-      <img src={img} alt="img"/>
-    </div>
-  )
-}
+    <div className="todo-app">
+      <AppHeader toDo={2} done={1} />
+      <div className="top-panel d-flex">
+        <SearchPanel />
+        <ItemStatusFilter />
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+      </div>
+
+      <TodoList todos={todoData} />
+    </div>
+  );
+};
+
+ReactDOM.render(<App />,
+  document.getElementById('root'));
