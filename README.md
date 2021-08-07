@@ -5,7 +5,7 @@
 node moduleni yuklab olish uchun bu buyruqni ishlating, serverni ishga tushirish uchun bu buyruq sizga <br/>
 #### `npm start`
 <p />
-node moduleni yuklab olganingizdan so'ng siz mana bu buyruq bilan serverni ishga tushira olasiz.😁
+node moduleni yuklab olganingizdan so'ng siz mana bu buyruq bilan serverni ishga tushira olasiz
 <br />
 <br />
 <p align="center">______________________________________________________________________________</p>
@@ -15,7 +15,7 @@ node moduleni yuklab olganingizdan so'ng siz mana bu buyruq bilan serverni ishga
 Use this command for install node module, you need this command for start server 
 #### `npm start`
 <p />
-After you install node module you can start server with this command 😁.
+After you install node module you can start server with this command.
 
 ## Created by Sherzod Mamatmurodov
 
