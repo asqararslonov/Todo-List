@@ -1,55 +1,76 @@
-import React from 'react'
-import "./index.css";
+import React, { Component } from "react";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "@fortawesome/fontawesome-free/css/all.css";
-import AppHeader from "./components/appHeader/app-header";
-import SearchPanel from "./components/searchPanel/search-panel";
-import ItemStatusFilter from "./components/itemStatusFilter/item-status-filter";
-import TodoList from "./components/todoList/todo-list";
+import AppHeader from "../appHeader/app-header";
+import SearchPanel from "../searchPanel/search-panel";
+import TodoList from "../todoList/todo-list";
+import ItemStatusFilter from "../itemStatusFilter/item-status-filter";
+import ItemAddForm from "../itemAddForm/item-add-form";
 
 class App extends Component {
-    state = {
-        todoData: [
-            { id: 1, label: "Drink Coffee", important: false },
-            { id: 2, label: "Make Awesome App", important: true },
-            { id: 3, label: "Have a lunch", important: false },
-        ],
+  rndId = 555;
+
+  state = {
+    todoData: [
+      { id: 1, label: "Drink Coffee", important: false },
+      { id: 2, label: "Make Awesome App", important: false },
+      { id: 3, label: "Have a lunch", important: false },
+    ],
+  };
+
+  onItemDelete = (id) => {
+    this.setState(({ todoData }) => {
+      const idx = todoData.findIndex((el) => el.id === id);
+      return {
+        todoData: [...todoData.slice(0, idx), ...todoData.slice(idx + 1)],
+      };
+    });
+  };
+
+  addItem = (text) => {
+    const newItem = {
+      label: text,
+      important: false,
+      id: this.rndId++,
     };
 
-    onItemDelete = (id) => {
-        this.setState(({ todoData }) => {
-            const idx = todoData.findIndex((el) => el.id === id);
-            // state.todoData.splice( idx, 1 ); -> bu xato, state ni to'g'ridan
-            // to'g'ri o'zgartirish mumkun emas!!!
+    this.setState((state) => {
+      const newArr = [...state.todoData, newItem];
+      return {
+        todoData: newArr,
+      };
+    });
+  };
 
-            // [ a, b, c, d, e ]; -> eski massiv (state);
-            // [ a, b ] -> before
-            // [ d, e ] -> after
-            // res [ ...before, ...after ];
-            // [ a, b, d, e ];
-            return {
-                todoData: [...todoData.slice(0, idx), ...todoData.slice(idx + 1)]
-            };
-        });
-    };
+  onToggleImportant = (id) => {
+    console.log("important", id);
+  };
 
-    render() {
-        const { todoData } = this.state;
-        const { onItemDelete } = this;
+  onToggleDone = (id) => {
+    console.log("done", id);
+  };
 
-        return (
-            <div className="todo-app">
-                <AppHeader toDo={2} done={1} />
-                <div className="top-panel d-flex">
-                    <SearchPanel />
-                    <ItemStatusFilter />
-                </div>
+  render() {
+    const { todoData } = this.state;
+    const { onItemDelete, addItem, onToggleImportant, onToggleDone } = this;
 
-                <TodoList todos={todoData} onDelete={onItemDelete} />
-            </div>
-        );
-    }
+    return (
+      <div className="todo-app">
+        <AppHeader toDo={2} done={1} />
+        <div className="top-panel d-flex">
+          <SearchPanel />
+          <ItemStatusFilter />
+        </div>
+
+        <TodoList
+          todos={todoData}
+          onDelete={onItemDelete}
+          onToggleImportant={onToggleImportant}
+          onToggleDone={onToggleDone}
+        />
+        <ItemAddForm addItem={addItem} />
+      </div>
+    );
+  }
 }
 
-export default App
+export default App;
