@@ -14,6 +14,7 @@ const TodoList = ({ todos, onDelete,
           onDelete={ () => onDelete(item.id) }
           label={item.label}
           important={item.important}
+          done={item.done}
           onToggleDone={ () => onToggleDone(item.id)}
           onToggleImportant={ () => onToggleImportant(item.id) }  
         />

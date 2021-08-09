@@ -7,13 +7,13 @@ import ItemStatusFilter from "../itemStatusFilter/item-status-filter";
 import ItemAddForm from "../itemAddForm/item-add-form";
 
 class App extends Component {
-  rndId = 555;
+  rndId = 100;
 
   state = {
     todoData: [
-      { id: 1, label: "Drink Coffee", important: false },
-      { id: 2, label: "Make Awesome App", important: false },
-      { id: 3, label: "Have a lunch", important: false },
+      this.createTodoItem("Drink Coffee"),
+      this.createTodoItem("Make Awesome App"),
+      this.createTodoItem("Have a lunch"),
     ],
   };
 
@@ -26,12 +26,17 @@ class App extends Component {
     });
   };
 
-  addItem = (text) => {
-    const newItem = {
-      label: text,
+  createTodoItem(label) {
+    return {
+      label,
       important: false,
-      id: this.rndId++,
-    };
+      done: false,
+      id: this.rndId++
+    }
+  };
+
+  addItem = (text) => {
+    const newItem = this.createTodoItem(text);
 
     this.setState((state) => {
       const newArr = [...state.todoData, newItem];
@@ -42,11 +47,38 @@ class App extends Component {
   };
 
   onToggleImportant = (id) => {
-    console.log("important", id);
+    this.setState( (state) => {
+      const idx = state.todoData.findIndex( el => el.id === id );
+      const oldItem = state.todoData[idx];
+      const newItem = { ...oldItem, important: !oldItem.important};
+
+      const newArray = [
+        ...state.todoData.slice(0, idx),
+        newItem,
+        ...state.todoData.slice(idx + 1)
+      ];
+      return {
+        todoData: newArray
+      }
+    });
+
   };
 
   onToggleDone = (id) => {
-    console.log("done", id);
+    this.setState( (state) => {
+      const idx = state.todoData.findIndex( el => el.id === id );
+      const oldItem = state.todoData[idx];
+      const newItem = { ...oldItem, done: !oldItem.done};
+
+      const newArray = [
+        ...state.todoData.slice(0, idx),
+        newItem,
+        ...state.todoData.slice(idx + 1)
+      ];
+      return {
+        todoData: newArray
+      }
+    });
   };
 
   render() {
