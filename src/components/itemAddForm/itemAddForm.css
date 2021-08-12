@@ -1,3 +1,11 @@
 .item-add-form {
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
     margin-top: 10px;
+}
+
+.item-add-form input {
+    width: 75%;
+    margin-right: 3px;
 }
