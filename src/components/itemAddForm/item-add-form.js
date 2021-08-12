@@ -33,6 +33,7 @@ class ItemAddForm extends Component {
 							className='form-control'
 							onChange={onLabelChange}
 							value={label}
+							height="38"
 							placeholder='What needs to be done'
 					/>
 

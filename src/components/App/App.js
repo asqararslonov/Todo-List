@@ -122,15 +122,16 @@ class App extends Component {
                 filter={filterBy}
                 onFilterChange={onFilterChange}
             />
-          </div>
 
+          </div>
+          <ItemAddForm addItem={addItem} />
           <TodoList
               todos={visibleItems}
               onDelete={onItemDelete}
               onToggleImportant={onToggleImportant}
               onToggleDone={onToggleDone}
           />
-          <ItemAddForm addItem={addItem} />
+
         </div>
     );
   }

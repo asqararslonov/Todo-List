@@ -1,8 +1,8 @@
 .item-add-form {
     display: flex;
     justify-content: space-between;
-    height: 3rem;
-    margin-top: 10px;
+    height: 38px;
+    margin-bottom: 20px;
 }
 
 .item-add-form input {
