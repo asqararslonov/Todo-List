@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TodoListItem from '../todoListItem/todo-list-item';
+import TodoListItem from '../todoListItem/todo-list-item.jsx';
 import './todo-list.css';
 
 const TodoList = ({ todos, onDelete, 

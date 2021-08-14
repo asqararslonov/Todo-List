@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import AppHeader from "../appHeader/app-header";
-import SearchPanel from "../searchPanel/search-panel";
-import TodoList from "../todoList/todo-list";
-import ItemStatusFilter from "../itemStatusFilter/item-status-filter";
-import ItemAddForm from "../itemAddForm/item-add-form";
+import AppHeader from "../appHeader/app-header.jsx";
+import SearchPanel from "../searchPanel/search-panel.jsx";
+import TodoList from "../todoList/todo-list.jsx";
+import ItemStatusFilter from "../itemStatusFilter/item-status-filter.jsx";
+import ItemAddForm from "../itemAddForm/item-add-form.jsx";
 
 class App extends Component {
   rndId = 100;
