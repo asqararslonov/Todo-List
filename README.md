@@ -16,8 +16,3 @@ Use this command for install node module, you need this command for start server
 #### `npm start`
 <p />
 After you install node module you can start server with this command.
-
-## Created by Sherzod Mamatmurodov
-
-
- 
